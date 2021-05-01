@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Реєстрація</title>
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body>
+<div id="navigationMenu"></div>
+<div class="container">
+    <form>
+        <ul class="flex-outer">
+            <li>
+                <label for="email">Електронна пошта</label>
+                <input type="email" id="email">
+            </li>
+            <li>
+                <label for="password">Пароль</label>
+                <input type="password" id="password">
+            </li>
+            <li>
+                <label for="fullName">Повне ім'я</label>
+                <input type="text" id="fullName">
+            </li>
+            <li>
+                <label for="age">Вік</label>
+                <input type="text" id="age">
+            </li>
+            <li>
+                <label for="gender">Стать</label>
+                <select id="gender"></select>
+            </li>
+            <li>
+                <label for="height">Зріст</label>
+                <input type="number" id="height">
+            </li>
+            <li>
+                <label for="weight">Вага</label>
+                <input type="number" id="weight">
+            </li>
+            <li>
+                <label for="trainingRate">Частота тренувань</label>
+                <select id="trainingRate"></select>
+            </li>
+            <li>
+                <button type="button", onclick="register()">Submit</button>
+            </li>
+        </ul>
+    </form>
+    <script src="../js/general.js"></script>
+    <script src="../js/navigationMenu.js"></script>
+    <script src="../js/enum.js"></script>
+    <script src="../js/register.js"></script>
+</div>
+</body>
+</html>

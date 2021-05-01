@@ -1,5 +1,6 @@
 package com.mykhalchuk.just_eat_it.domain.dto.dish;
 
+import com.mykhalchuk.just_eat_it.domain.enums.DailyDishType;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
@@ -17,5 +18,5 @@ public class DishCreationDto {
 
     private List<DishIngredientDto> dishIngredients;
 
-    private List<Long> dishCategories;
+    private List<DailyDishType> dishCategories;
 }

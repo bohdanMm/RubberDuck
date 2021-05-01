@@ -7,9 +7,7 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Getter
@@ -30,6 +28,7 @@ public class MainUser extends IdHolder {
     private Role role;
 
     @NotNull
+    @Column(unique = true)
     private String email;
 
     @NotNull

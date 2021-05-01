@@ -4,6 +4,7 @@ import com.mykhalchuk.just_eat_it.domain.dto.MainUserDto;
 import com.mykhalchuk.just_eat_it.domain.entity.MainUser;
 import com.mykhalchuk.just_eat_it.domain.enums.Role;
 import com.mykhalchuk.just_eat_it.exception.BadRequestException;
+import org.apache.commons.codec.digest.DigestUtils;
 import org.mapstruct.AfterMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
@@ -16,10 +17,12 @@ import java.math.RoundingMode;
 public interface MainUserMapper {
 
     @Mapping(target = "role", expression = "java(Role.USER)")
+    @Mapping(target = "password", ignore = true)
     MainUser toEntity(MainUserDto dto);
 
     @AfterMapping
     default void afterToEntityMapper(@MappingTarget MainUser mainUser, MainUserDto dto) {
+        mainUser.setPassword(new DigestUtils("SHA3-256").digestAsHex(dto.getPassword()));
         setBodyMassIndex(mainUser, dto);
         mainUser.setDailyCalories(calculateDailyCalories(dto));
     }

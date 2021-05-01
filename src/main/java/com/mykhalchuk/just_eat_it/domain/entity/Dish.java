@@ -1,13 +1,12 @@
 package com.mykhalchuk.just_eat_it.domain.entity;
 
+import com.mykhalchuk.just_eat_it.domain.enums.DailyDishType;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,6 +20,7 @@ public class Dish extends IdHolder {
     @OneToMany(mappedBy = "dish", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<DishIngredient> dishIngredients;
 
-    @ManyToMany
-    private List<DishCategory> dishCategories;
+    @Enumerated(EnumType.STRING)
+    @ElementCollection
+    private Set<DailyDishType> dishCategories;
 }
