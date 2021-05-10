@@ -1,0 +1,17 @@
+body {
+    font: normal 18px/1.5 "Fira Sans", "Helvetica Neue", sans-serif;
+    color: #3AAFAB;
+    margin: 0;
+}
+
+
+button {
+    margin-left: auto;
+    padding: 8px 16px;
+    border: none;
+    background: #3AAFAB;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .09em;
+    border-radius: 5px;
+}

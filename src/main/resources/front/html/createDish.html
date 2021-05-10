@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Створення страви</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/navigation-menu.css">
+    <link rel="stylesheet" href="../css/forms.css">
+</head>
+<body>
+<div id="navigationMenu"></div>
+<div class="container">
+    <form>
+        <ul class="flex-outer">
+            <li>
+                <label for="name">назва страви</label>
+                <input type="name" id="name">
+            </li>
+            <li id="addIngredientButtonLi">
+                <button type="button" onclick="addIngredient()">Додати інгредієнт</button>
+            </li>
+            <li>
+                <button type="button" onclick="register()">Надіслати</button>
+            </li>
+        </ul>
+    </form>
+</div>
+<script src="../js/general.js"></script>
+<script src="../js/navigationMenu.js"></script>
+<script src="../js/ingredient.js"></script>
+<script src="../js/createDish.js"></script>
+</body>
+</html>

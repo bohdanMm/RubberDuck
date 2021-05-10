@@ -17,6 +17,8 @@ public class Dish extends IdHolder {
 
     private String pictureUrl;
 
+    private Integer calories;
+
     @OneToMany(mappedBy = "dish", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<DishIngredient> dishIngredients;
 

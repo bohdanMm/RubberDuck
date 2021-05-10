@@ -33,28 +33,21 @@ public class DishService {
     }
 
     public void create(DishCreationDto dishDto) {
-        validateDishPercentage(dishDto);
         Dish dish = dishMapper.toEntity(dishDto);
+        int calories = dish.getDishIngredients()
+                .stream()
+                .mapToInt(this::calculateIngredientCalories)
+                .sum();
+        dish.setCalories(calories);
         dishRepository.save(dish);
     }
 
-    private void validateDishPercentage(DishCreationDto dishDto) {
-        int percentageOfIngredients = dishDto.getDishIngredients()
-                .stream()
-                .mapToInt(DishIngredientDto::getAmount)
-                .sum();
-        if (percentageOfIngredients != 100){
-            throw new BadRequestException("Percentage of ingredients should be 100");
-        }
+
+    private Integer calculateIngredientCalories(DishIngredient dishIngredient) {
+        Ingredient ingredient = ingredientService.findById(dishIngredient.getIngredient().getId());
+        return (BigDecimal.valueOf(ingredient.getCalories())
+                .multiply(BigDecimal.valueOf(dishIngredient.getAmount()))
+                .divide(BigDecimal.valueOf(100), 0, RoundingMode.CEILING))
+                .intValue();
     }
-
-//    private Integer calculateIngredientCalories(DishIngredient dishIngredient) {
-//        Ingredient ingredient = ingredientService.findById(dishIngredient.getIngredient().getId());
-//        return (BigDecimal.valueOf(ingredient.getCalories())
-//                .multiply(BigDecimal.valueOf(dishIngredient.getAmount()))
-//                .divide(BigDecimal.valueOf(100), 0, RoundingMode.CEILING))
-//                .intValue();
-//    }
-
-
 }
