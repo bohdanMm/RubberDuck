@@ -1,10 +1,14 @@
 package com.mykhalchuk.just_eat_it.controller;
 
+import com.mykhalchuk.just_eat_it.domain.dto.LoginResponse;
 import com.mykhalchuk.just_eat_it.domain.dto.MainUserDto;
 import com.mykhalchuk.just_eat_it.domain.dto.dish.LoginDto;
 import com.mykhalchuk.just_eat_it.service.MainUserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequiredArgsConstructor
@@ -20,7 +24,7 @@ public class MainUserController {
     }
 
     @PostMapping("login")
-    public Long login(@RequestBody LoginDto loginDto) {
+    public LoginResponse login(@RequestBody LoginDto loginDto) {
         return mainUserService.login(loginDto);
     }
 }

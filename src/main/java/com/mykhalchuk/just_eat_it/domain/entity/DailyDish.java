@@ -1,18 +1,19 @@
 package com.mykhalchuk.just_eat_it.domain.entity;
 
-import com.mykhalchuk.just_eat_it.domain.DailyMenu;
 import com.mykhalchuk.just_eat_it.domain.enums.DailyDishType;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.ManyToOne;
 
+@Builder
 @Getter
 @Setter
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class DailyDish extends IdHolder {
 
     private Long id;
@@ -26,5 +27,5 @@ public class DailyDish extends IdHolder {
     @Enumerated(EnumType.STRING)
     private DailyDishType type;
 
-    private Long calories;
+    private Integer calories;
 }

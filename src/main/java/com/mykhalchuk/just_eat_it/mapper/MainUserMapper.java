@@ -1,5 +1,6 @@
 package com.mykhalchuk.just_eat_it.mapper;
 
+import com.mykhalchuk.just_eat_it.domain.dto.LoginResponse;
 import com.mykhalchuk.just_eat_it.domain.dto.MainUserDto;
 import com.mykhalchuk.just_eat_it.domain.entity.MainUser;
 import com.mykhalchuk.just_eat_it.domain.enums.Role;
@@ -19,6 +20,8 @@ public interface MainUserMapper {
     @Mapping(target = "role", expression = "java(Role.USER)")
     @Mapping(target = "password", ignore = true)
     MainUser toEntity(MainUserDto dto);
+
+    LoginResponse toLoginResponse(MainUser mainUser);
 
     @AfterMapping
     default void afterToEntityMapper(@MappingTarget MainUser mainUser, MainUserDto dto) {

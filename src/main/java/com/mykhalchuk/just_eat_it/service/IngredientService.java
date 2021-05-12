@@ -2,6 +2,7 @@ package com.mykhalchuk.just_eat_it.service;
 
 import com.mykhalchuk.just_eat_it.domain.dto.IngredientDto;
 import com.mykhalchuk.just_eat_it.domain.entity.Ingredient;
+import com.mykhalchuk.just_eat_it.domain.enums.AmountType;
 import com.mykhalchuk.just_eat_it.exception.EntityNotFoundException;
 import com.mykhalchuk.just_eat_it.mapper.IngredientMapper;
 import com.mykhalchuk.just_eat_it.repository.IngredientRepository;
@@ -19,6 +20,7 @@ public class IngredientService {
     private final IngredientMapper ingredientMapper;
 
     public void create(IngredientDto ingredientDto) {
+        ingredientDto.setAmountType(AmountType.GRAM);
         Ingredient ingredient = ingredientMapper.toEntity(ingredientDto);
         ingredientRepository.save(ingredient);
     }
@@ -30,7 +32,7 @@ public class IngredientService {
                 .collect(Collectors.toList());
     }
 
-    public Ingredient findById(Long id){
+    public Ingredient findById(Long id) {
         return ingredientRepository.findById(id)
                 .orElseThrow(() -> new EntityNotFoundException("Ingredient not found"));
     }

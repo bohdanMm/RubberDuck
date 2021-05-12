@@ -5,9 +5,6 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
-
 @Getter
 @Setter
 public class IngredientDto {
@@ -20,6 +17,5 @@ public class IngredientDto {
     @NotNull
     private Integer calories;
 
-    @NotNull
     private AmountType amountType;
 }

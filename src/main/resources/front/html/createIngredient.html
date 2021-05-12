@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Створення страви</title>
+    <title>Створення інгредієнту</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/navigation-menu.css">
     <link rel="stylesheet" href="../css/forms.css">
@@ -13,14 +13,15 @@
     <form>
         <ul class="flex-outer">
             <li>
-                <label for="name">назва страви</label>
-                <input type="name" id="name">
+                <label for="name">Назва інгредієнту</label>
+                <input type="text" id="name">
             </li>
             <li id="addIngredientButtonLi">
-                <button type="button" onclick="addIngredient()">Додати інгредієнт</button>
+                <label for="calories">Калорійність</label>
+                <input type="number" id="calories">
             </li>
             <li>
-                <button type="button" onclick="createDish()">Надіслати</button>
+                <button type="button" onclick="createIngredient()">Створити інгредієнт</button>
             </li>
         </ul>
     </form>
@@ -28,6 +29,6 @@
 <script src="../js/general.js"></script>
 <script src="../js/navigationMenu.js"></script>
 <script src="../js/ingredient.js"></script>
-<script src="../js/createDish.js"></script>
+<script src="../js/createIngredient.js"></script>
 </body>
 </html>

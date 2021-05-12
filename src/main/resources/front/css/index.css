@@ -1,0 +1,32 @@
+#content {
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.news {
+    padding: 20px;
+    width: 80%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    border-radius: 25px;
+    background-color: #3AAFAB;
+    color: white;
+    border: solid #1d5452 3px;
+}
+
+.newsImage {
+    width: 33%;
+}
+
+p {
+    padding: 7px;
+}
+
+.newsBody {
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+}

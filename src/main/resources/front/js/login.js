@@ -20,7 +20,7 @@ async function login() {
             .then(response => response.json())
             .then((response) => {
                 console.log(JSON.stringify(response))
-                localStorage.setItem('userId', JSON.stringify(response));
+                localStorage.setItem('user', JSON.stringify(response));
             });
     } catch (error) {
         console.error('Помилка:', error);

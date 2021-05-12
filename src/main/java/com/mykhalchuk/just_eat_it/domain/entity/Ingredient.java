@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -15,6 +16,7 @@ import javax.persistence.Enumerated;
 @Entity
 public class Ingredient extends IdHolder {
 
+    @Column(unique = true)
     private String name;
 
     private Integer calories;
@@ -22,7 +24,7 @@ public class Ingredient extends IdHolder {
     @Enumerated(EnumType.STRING)
     private AmountType amountType;
 
-    public Ingredient(Long id){
+    public Ingredient(Long id) {
         this.id = id;
     }
 }
