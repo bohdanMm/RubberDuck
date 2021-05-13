@@ -16,7 +16,7 @@ function addNavigationMenu() {
                 element.innerHTML = text;
             });
     } else if (user.role === "USER") {
-        fetch('../html/loginedUserNavigationMenu.html')
+        fetch('../html/navigationMenu/loginedUserNavigationMenu.html')
             .then(response => response.text())
             .then(text => {
                 element.innerHTML = text;

@@ -3,12 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Меню</title>
+    <link rel="stylesheet" href="../css/general.css">
+    <link rel="stylesheet" href="../css/navigation-menu.css">
+    <link rel="stylesheet" href="../css/menu.css">
 </head>
 <body>
 <div id="navigationMenu"></div>
-<div id="menuContainer">
-    <ul id="menu">
+<div id="menu">
+    <div id="dates">
+        <div>
+            <label for="startDate">Початкова дата меню</label>
+            <input type="date" id="startDate">
+        </div>
+        <div>
+            <label for="endDate">Кінцева дата меню</label>
+            <input type="date" id="endDate">
+        </div>
+    </div>
+    <div>
+        <div>
+            <button onclick="previousDate()">🠔</button>
+            <button onclick="nextDate()">🠖</button>
+        </div>
+    </div>
+    <ul id="dishes">
     </ul>
+
 </div>
+<script src="../js/general.js"></script>
+<script src="../js/navigationMenu.js"></script>
+<script src="../js/menu.js"></script>
 </body>
 </html>

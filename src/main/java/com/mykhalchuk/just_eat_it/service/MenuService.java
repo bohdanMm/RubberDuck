@@ -1,7 +1,12 @@
 package com.mykhalchuk.just_eat_it.service;
 
+import com.mykhalchuk.just_eat_it.domain.dto.DailyMenuDto;
+import com.mykhalchuk.just_eat_it.domain.dto.MenuDto;
 import com.mykhalchuk.just_eat_it.domain.entity.*;
 import com.mykhalchuk.just_eat_it.domain.enums.DailyDishType;
+import com.mykhalchuk.just_eat_it.mapper.DailyMenuMapper;
+import com.mykhalchuk.just_eat_it.mapper.MenuMapper;
+import com.mykhalchuk.just_eat_it.repository.DailyMenuRepository;
 import com.mykhalchuk.just_eat_it.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -18,6 +23,9 @@ public class MenuService {
 
     private final DishService dishService;
     private final MenuRepository menuRepository;
+    private final MenuMapper menuMapper;
+    private final DailyMenuRepository dailyMenuRepository;
+    private final DailyMenuMapper dailyMenuMapper;
 
     public void createMenu(MainUser user) {
         List<Dish> breakfasts = dishService.getShuffledByCategory(DailyDishType.BREAKFAST.name());
@@ -44,6 +52,14 @@ public class MenuService {
         menuRepository.save(menu);
     }
 
+    public MenuDto getByUserId(Long userId) {
+        return menuMapper.toDto(menuRepository.getByUserId(userId));
+    }
+
+    public DailyMenuDto getDailyMenu(Long userId, LocalDate menuDate) {
+        return dailyMenuMapper.toDto(dailyMenuRepository.findByUserIdAndDate(userId, menuDate));
+    }
+
     private DailyDish buildDailyDish(DailyDishType dailyDishType, Dish dish, DailyMenu dailyMenu) {
         return DailyDish.builder()
                 .type(dailyDishType)
@@ -57,7 +73,7 @@ public class MenuService {
     private DailyMenu buildDailyMenu(LocalDate dailyMenuDate, Menu menu) {
         return DailyMenu.builder()
                 .menu(menu)
-                .localDate(dailyMenuDate)
+                .menuDate(dailyMenuDate)
                 .dailyDishes(new ArrayList<>())
                 .build();
     }

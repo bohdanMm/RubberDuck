@@ -20,7 +20,7 @@ public class DailyMenu extends IdHolder {
     @ManyToOne
     private Menu menu;
 
-    private LocalDate localDate;
+    private LocalDate menuDate;
 
     @OneToMany(mappedBy = "dailyMenu", cascade = {CascadeType.MERGE, CascadeType.PERSIST}, orphanRemoval = true)
     private List<DailyDish> dailyDishes;
