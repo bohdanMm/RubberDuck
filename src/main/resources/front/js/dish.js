@@ -5,13 +5,13 @@ window.onload = function () {
 }
 
 async function getDishById(dishId) {
-    // console.log(dishId)
     try {
-        const response = await fetch(url + "dish/" + dishId, {
+        await fetch(url + "dish/" + dishId, {
             method: 'GET'
         })
             .then(response => response.json())
             .then(json => {
+                console.log(json)
                 setDishData(json);
                 let list = document.getElementById("ingredients");
                 for (let i = 0; i < json.dishIngredients.length; i++) {
@@ -29,7 +29,7 @@ function setDishData(json){
     let calories = document.querySelector("#calories");
     name.innerHTML = json.name;
     dishImage.src = json.pictureUrl;
-    calories.innerHTML = json.calories;
+    calories.innerHTML = calories.innerHTML +  json.calories;
 }
 
 function createIngredient(ingredientJson){

@@ -24,4 +24,9 @@ public class EnumController {
     public List<String> getTrainingRates(){
         return enumService.getTrainingRates();
     }
+
+    @GetMapping("dish-categories")
+    public List<String> getDishCategories(){
+        return enumService.getDishTypes();
+    }
 }

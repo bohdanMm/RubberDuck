@@ -1,14 +1,20 @@
-let menuDate = new Date();
+let menuSelectedDate = new Date();
 
 window.onload = function () {
     addNavigationMenu();
-    getDish(menuDate);
+    setSelectedDate();
+    getMenu();
+    getDish(menuSelectedDate);
+}
+
+function setSelectedDate(){
+    document.querySelector("#selectedDate").value = parsDate(menuSelectedDate);
 }
 
 async function getDish(menuDate) {
     try {
         let user = JSON.parse(localStorage.getItem("user"));
-        const response = await fetch(url + "menu/daily/user/" + user.id + "?menuDate=" + parsDate(menuDate), {
+        await fetch(url + "menu/daily/user/" + user.id + "?menuDate=" + parsDate(menuDate), {
             method: 'GET'
         })
             .then(response => response.json())
@@ -17,6 +23,23 @@ async function getDish(menuDate) {
                 for (let i = 0; i < dishes.length; i++) {
                     addDish(dishes[i])
                 }
+            });
+    } catch (error) {
+        console.error('Ошибка:', error);
+    }
+}
+
+async function getMenu() {
+    try {
+        let user = JSON.parse(localStorage.getItem("user"));
+        await fetch(url + "menu/user/" + user.id , {
+            method: 'GET'
+        })
+            .then(response => response.json())
+            .then(json => {
+                console.log(json)
+                document.querySelector("#startDate").value = json.startDate;
+                document.querySelector("#endDate").value = json.endDate;
             });
     } catch (error) {
         console.error('Ошибка:', error);
@@ -56,17 +79,19 @@ function parsDate(date) {
 
 function nextDate() {
     let dishes = document.getElementById("dishes");
-    menuDate.setDate(menuDate.getDate() + 1);
+    menuSelectedDate.setDate(menuSelectedDate.getDate() + 1);
     clearList(dishes);
-    getDish(menuDate);
+    getDish(menuSelectedDate);
+    setSelectedDate();
 
 }
 
 function previousDate() {
     let dishes = document.getElementById("dishes");
-    menuDate.setDate(menuDate.getDate() - 1);
+    menuSelectedDate.setDate(menuSelectedDate.getDate() - 1);
     clearList(dishes);
-    getDish(menuDate);
+    getDish(menuSelectedDate);
+    setSelectedDate();
 }
 
 function clearList(list) {

@@ -6,7 +6,7 @@ async function getGenders() {
         const json = await response.json();
         return json;
     } catch (error) {
-        console.error('Ошибка:', error);
+        console.error('Помилка:', error);
     }
 }
 
@@ -17,7 +17,18 @@ async function getTrainingRates() {
         });
         return await response.json();
     } catch (error) {
-        console.error('Ошибка:', error);
+        console.error('Помилка:', error);
+    }
+}
+
+async function getDishCategories() {
+    try {
+        const response = await fetch(url + "enum/dish-categories", {
+            method: 'GET'
+        });
+        return await response.json();
+    } catch (error) {
+        console.error('Помилка:', error);
     }
 }
 

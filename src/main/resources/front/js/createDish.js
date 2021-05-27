@@ -27,7 +27,6 @@ function createFieldForIngredient(li) {
     getIngredients(select.id);
 }
 
-
 function createFieldForIngredientAmount(li) {
     let label = document.createElement("Label");
     let input = document.createElement("input");
@@ -39,9 +38,55 @@ function createFieldForIngredientAmount(li) {
     li.append(input);
 }
 
+function addCategory() {
+    let buttonLi = document.querySelector("#addCategoryButtonLi");
+    let li = document.createElement("li");
+    createFieldForCategory(li);
+    buttonLi.before(li);
+    counter++;
+}
+
+function createFieldForCategory(li) {
+    let label = document.createElement("Label");
+    let select = document.createElement("select");
+    select.id = "select" + counter;
+    select.className = "category";
+    label.setAttribute("for", select.id);
+    label.innerHTML = "Категорія";
+    li.append(label);
+    li.append(select);
+    setDishCategories(select);
+}
+
+async function setDishCategories(select) {
+    let dishCategories = await getDishCategories();
+
+    for (let i = 0; i < dishCategories.length; i++) {
+        let opt = document.createElement('option');
+        opt.value = dishCategories[i];
+        opt.innerHTML = mapDishTime(opt.value);
+        select.appendChild(opt);
+    }
+}
+
+function mapDishTime(dishTime){
+    switch (dishTime) {
+        case "BREAKFAST":
+            return "Сніданок";
+        case "LUNCH":
+            return "Перекус";
+        case "DINNER":
+            return "Обід";
+        case "SNACK":
+            return "Перекус";
+        case "SUPPER":
+            return "Вечеря";
+    }
+}
+
 
 async function createDish() {
-    let arr = [];
+    let ingredientArr = [];
     let ingredients = document.getElementsByClassName("ingredient");
     let ingredientsAmounts = document.getElementsByClassName("ingredientAmount");
     for (let i = 0; i < ingredients.length; i++) {
@@ -49,14 +94,22 @@ async function createDish() {
             ingredientId: ingredients[i].value,
             amount: ingredientsAmounts[i].value
         };
-        arr.push(ingredient);
-        console.log(arr);
+        ingredientArr.push(ingredient);
     }
+
+    let categoryArr = [];
+    let categories = document.getElementsByClassName("category");
+    for (let i = 0; i < categories.length; i++) {
+        categoryArr.push(categories[i].value);
+    }
+
     let dish = {
         name: document.querySelector('#name').value,
-        dishIngredients: arr
+        dishIngredients: ingredientArr,
+        dishCategories: categoryArr
     };
 
+    console.log(dish)
     try {
         await fetch(url + "dish/create", {
             method: 'POST',

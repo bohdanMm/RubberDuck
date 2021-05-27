@@ -11,8 +11,11 @@ import com.mykhalchuk.just_eat_it.repository.MenuRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
+import java.math.RoundingMode;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
@@ -39,12 +42,14 @@ public class MenuService {
         for (int i = 0; i < MENU_FOR_DAYS; i++) {
             DailyMenu dailyMenu = buildDailyMenu(dailyMenuDate, menu);
             List<DailyDish> dailyDishes = dailyMenu.getDailyDishes();
+
             dailyDishes.add(buildDailyDish(DailyDishType.BREAKFAST, breakfasts.get(i % breakfasts.size()), dailyMenu));
             dailyDishes.add(buildDailyDish(DailyDishType.DINNER, dinners.get(i % dinners.size()), dailyMenu));
             dailyDishes.add(buildDailyDish(DailyDishType.SNACK, snacks.get(i % snacks.size()), dailyMenu));
             dailyDishes.add(buildDailyDish(DailyDishType.SUPPER, suppers.get(i % suppers.size()), dailyMenu));
 
             menu.getDailyMenus().add(dailyMenu);
+            dailyMenuDate = dailyMenuDate.plusDays(1);
         }
 
         menuRepository.save(menu);
@@ -79,7 +84,7 @@ public class MenuService {
     private Menu buildMenu(MainUser user, LocalDate dailyMenuDate) {
         return Menu.builder()
                 .startDate(dailyMenuDate)
-                .endDate(dailyMenuDate.plusDays(MENU_FOR_DAYS))
+                .endDate(dailyMenuDate.plusDays(MENU_FOR_DAYS).minusDays(1))
                 .user(user)
                 .dailyMenus(new ArrayList<>())
                 .build();
