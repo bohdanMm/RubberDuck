@@ -1,6 +1,6 @@
 async function getIngredients(objectId) {
     try {
-        const response = await fetch(url + "ingredient/all", {
+        await fetch(url + "ingredient/all", {
             method: 'GET'
         })
             .then(response => response.json())

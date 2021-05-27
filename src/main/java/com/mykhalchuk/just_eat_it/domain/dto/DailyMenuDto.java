@@ -1,5 +1,6 @@
 package com.mykhalchuk.just_eat_it.domain.dto;
 
+import com.mykhalchuk.just_eat_it.domain.dto.dish.DailyDishDto;
 import lombok.Getter;
 import lombok.Setter;
 

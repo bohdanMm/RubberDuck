@@ -20,3 +20,31 @@ async function getTrainingRates() {
         console.error('Ошибка:', error);
     }
 }
+
+function mapDishTime(dishTime){
+    switch (dishTime) {
+        case "BREAKFAST":
+            return "Сніданок";
+        case "LUNCH":
+            return "Перекус";
+        case "DINNER":
+            return "Обід";
+        case "SNACK":
+            return "Перекус";
+        case "SUPPER":
+            return "Вечеря";
+    }
+}
+
+function mapIngredientAmount(ingredientAmount){
+    switch (ingredientAmount) {
+        case "GRAM":
+            return "Грам";
+        case "COUNT":
+            return "Штук";
+        case "TEASPOON":
+            return "Чайна ложка";
+        case "SPOON":
+            return "Ложка";
+    }
+}

@@ -1,4 +1,4 @@
-package com.mykhalchuk.just_eat_it.domain.dto;
+package com.mykhalchuk.just_eat_it.domain.dto.dish;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +8,8 @@ import lombok.Setter;
 public class DailyDishDto {
 
     private Long id;
+
+    private String dishId;
 
     private String dishName;
 

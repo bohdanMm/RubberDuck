@@ -69,13 +69,14 @@ async function register() {
     };
 
     try {
-        const response = await fetch(url + "main-user/register", {
+        await fetch(url + "main-user/register", {
             method: 'POST',
             body: JSON.stringify(registerInfo),
             headers: {
                 'Content-Type': 'application/json'
             }
-        });
+        })
+            .then(() => window.location.href = "index.html");
     } catch (error) {
         console.error('Посилка:', error);
     }

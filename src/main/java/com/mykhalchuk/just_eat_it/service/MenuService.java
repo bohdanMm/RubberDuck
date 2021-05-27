@@ -19,7 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class MenuService {
 
-    private Integer MENU_FOR_DAYS = 1;
+    private final Integer MENU_FOR_DAYS = 7;
 
     private final DishService dishService;
     private final MenuRepository menuRepository;
@@ -29,9 +29,8 @@ public class MenuService {
 
     public void createMenu(MainUser user) {
         List<Dish> breakfasts = dishService.getShuffledByCategory(DailyDishType.BREAKFAST.name());
-        List<Dish> lunches = dishService.getShuffledByCategory(DailyDishType.LUNCH.name());
         List<Dish> dinners = dishService.getShuffledByCategory(DailyDishType.DINNER.name());
-        List<Dish> noonings = dishService.getShuffledByCategory(DailyDishType.NOONING.name());
+        List<Dish> snacks = dishService.getShuffledByCategory(DailyDishType.SNACK.name());
         List<Dish> suppers = dishService.getShuffledByCategory(DailyDishType.SUPPER.name());
 
         LocalDate dailyMenuDate = LocalDate.now();
@@ -41,9 +40,8 @@ public class MenuService {
             DailyMenu dailyMenu = buildDailyMenu(dailyMenuDate, menu);
             List<DailyDish> dailyDishes = dailyMenu.getDailyDishes();
             dailyDishes.add(buildDailyDish(DailyDishType.BREAKFAST, breakfasts.get(i % breakfasts.size()), dailyMenu));
-            dailyDishes.add(buildDailyDish(DailyDishType.LUNCH, lunches.get(i % lunches.size()), dailyMenu));
             dailyDishes.add(buildDailyDish(DailyDishType.DINNER, dinners.get(i % dinners.size()), dailyMenu));
-            dailyDishes.add(buildDailyDish(DailyDishType.NOONING, noonings.get(i % noonings.size()), dailyMenu));
+            dailyDishes.add(buildDailyDish(DailyDishType.SNACK, snacks.get(i % snacks.size()), dailyMenu));
             dailyDishes.add(buildDailyDish(DailyDishType.SUPPER, suppers.get(i % suppers.size()), dailyMenu));
 
             menu.getDailyMenus().add(dailyMenu);

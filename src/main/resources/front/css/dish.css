@@ -1,0 +1,32 @@
+#dishWithIngredients{
+    display: flex;
+    flex-direction: row;
+}
+
+ul {
+    padding: 0;
+    display: inline-block;
+    list-style: none;
+    width: 200px;
+}
+
+#ingredientContainer {
+    padding-top: 120px;
+}
+
+#dishImg {
+    width: 60%;
+}
+
+#dish{
+    padding-left: 15%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+}
+
+.ingredient {
+    display: flex;
+    justify-content: space-between;
+}

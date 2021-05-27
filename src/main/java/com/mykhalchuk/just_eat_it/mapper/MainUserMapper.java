@@ -54,7 +54,6 @@ public interface MainUserMapper {
                 throw new BadRequestException("You entered incorrect gender");
         }
         return (int) (dailyCalories * dto.getTrainingRate().getInfluence());
-
     }
 
     default int calculateDailyCaloriesForMan(MainUserDto dto) {

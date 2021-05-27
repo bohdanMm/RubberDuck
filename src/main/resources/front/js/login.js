@@ -10,7 +10,7 @@ async function login() {
     };
 
     try {
-        const response = await fetch(url + "main-user/login", {
+        await fetch(url + "main-user/login", {
             method: 'POST',
             body: JSON.stringify(loginInfo),
             headers: {
@@ -21,7 +21,8 @@ async function login() {
             .then((response) => {
                 console.log(JSON.stringify(response))
                 localStorage.setItem('user', JSON.stringify(response));
-            });
+            })
+            .then(() => window.location.href = "index.html");
     } catch (error) {
         console.error('Помилка:', error);
     }

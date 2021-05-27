@@ -9,6 +9,7 @@ import com.mykhalchuk.just_eat_it.repository.IngredientRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -28,6 +29,7 @@ public class IngredientService {
     public List<IngredientDto> getAll() {
         return ingredientRepository.findAll()
                 .stream()
+                .sorted((Comparator.comparing(Ingredient::getName)))
                 .map(ingredientMapper::toDto)
                 .collect(Collectors.toList());
     }

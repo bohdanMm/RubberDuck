@@ -13,7 +13,6 @@ async function getDish(menuDate) {
         })
             .then(response => response.json())
             .then(json => {
-                console.log(json)
                 let dishes = json.dailyDishes;
                 for (let i = 0; i < dishes.length; i++) {
                     addDish(dishes[i])
@@ -32,8 +31,10 @@ function addDish(dish) {
     let name = document.createElement("h2");
     let calories = document.createElement("h3");
     let image = document.createElement("img");
+    li.value = dish.dishId;
+    li.addEventListener("click", function () {redirectToDish(event, this.value)}, false)
     div.classList.add("dish");
-    timeToEat.innerHTML = dish.type;
+    timeToEat.innerHTML = mapDishTime(dish.type);
     name.innerHTML = dish.dishName;
     calories.innerHTML = "Калорійність: " + dish.calories;
     div.append(timeToEat);
@@ -72,4 +73,8 @@ function clearList(list) {
     while (list.firstChild) {
         list.removeChild(list.firstChild);
     }
+}
+
+function redirectToDish(event, dishId){
+    window.location.href = 'dish.html?id=' + dishId;
 }

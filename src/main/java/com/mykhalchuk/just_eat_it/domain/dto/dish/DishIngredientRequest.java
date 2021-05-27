@@ -1,19 +1,16 @@
 package com.mykhalchuk.just_eat_it.domain.dto.dish;
 
+import com.mykhalchuk.just_eat_it.domain.enums.AmountType;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
-
 @Getter
 @Setter
-public class DishIngredientDto {
+public class DishIngredientRequest {
 
     private Long ingredientId;
 
     private Integer amount;
 
-    private String ingredientName;
-
-    private String amountType;
+    private AmountType amountType;
 }

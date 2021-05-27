@@ -16,7 +16,7 @@ public class DishCreationDto {
 
     private String pictureUrl;
 
-    private List<DishIngredientDto> dishIngredients;
+    private List<DishIngredientRequest> dishIngredients;
 
     private List<DailyDishType> dishCategories;
 }
