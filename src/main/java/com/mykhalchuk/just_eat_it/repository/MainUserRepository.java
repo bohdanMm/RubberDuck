@@ -15,4 +15,7 @@ public interface MainUserRepository extends JpaRepository<MainUser, Long> {
     @Query("select case when count(mu) > 0 then true else false end " +
             "from MainUser mu where lower(mu.email) = :email")
     boolean existsByEmail(String email);
+
+    @Query("select u.dailyCalories from MainUser u where u.id = :userId")
+    Integer findCaloriesByUserId(Long userId);
 }

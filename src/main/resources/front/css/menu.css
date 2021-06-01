@@ -31,3 +31,31 @@ h3 {
 ul {
     list-style-type: none;
 }
+
+.changeDishButton{
+    height: 22px;
+    margin-top: 0;
+    padding: 4px 5px;
+}
+
+#closeModalContainer{
+    display: flex;
+    justify-content: flex-end;
+}
+
+#dishesForChange{
+    display: flex;
+    justify-content: space-around;
+}
+
+.dishForChange{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dishForChangeImg {
+    width: 340px;
+    height: 300px;
+
+}

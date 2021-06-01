@@ -5,6 +5,7 @@
     <title>Меню</title>
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/navigation-menu.css">
+    <link rel="stylesheet" href="../css/modal.css">
     <link rel="stylesheet" href="../css/menu.css">
 </head>
 <body>
@@ -32,7 +33,21 @@
     </div>
     <ul id="dishes">
     </ul>
-
+</div>
+<div id="changeDishModal" class="modal">
+    <div class="modal-content">
+        <div id="closeModalContainer">
+            <button id="closeModal" onclick="closeModal()">&times;</button>
+        </div>
+        <div id="dishesForChange">
+            <div class="dishForChange">
+            </div>
+            <div class="dishForChange">
+            </div>
+            <div class="dishForChange">
+            </div>
+        </div>
+    </div>
 </div>
 <script src="../js/general.js"></script>
 <script src="../js/navigationMenu.js"></script>

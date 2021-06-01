@@ -6,7 +6,7 @@ window.onload = function () {
 
 async function getDishById(dishId) {
     try {
-        await fetch(url + "dish/" + dishId, {
+        await fetch(url + "dish/daily-dish/" + dishId, {
             method: 'GET'
         })
             .then(response => response.json())

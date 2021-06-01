@@ -6,13 +6,9 @@ import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.math.BigDecimal;
-
 @Getter
 @Setter
-public class MainUserDto {
-
-    private Long id;
+public class MainUserRequest {
 
     @NotNull
     private String fullName;
@@ -30,14 +26,11 @@ public class MainUserDto {
     private String email;
 
     @NotNull
-    private String gender;
+    private String password;
 
     @NotNull
-    private String trainingRate;
+    private Gender gender;
 
     @NotNull
-    private Integer dailyCalories;
-
-    @NotNull
-    private BigDecimal bodyMassIndex;
+    private TrainingRate trainingRate;
 }

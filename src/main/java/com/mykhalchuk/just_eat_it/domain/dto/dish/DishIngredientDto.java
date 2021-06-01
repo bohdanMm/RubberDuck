@@ -16,4 +16,6 @@ public class DishIngredientDto {
     private String ingredientName;
 
     private String amountType;
+
+    private Long calories;
 }

@@ -105,6 +105,7 @@ async function createDish() {
 
     let dish = {
         name: document.querySelector('#name').value,
+        pictureUrl: document.querySelector('#pictureUrl').value,
         dishIngredients: ingredientArr,
         dishCategories: categoryArr
     };

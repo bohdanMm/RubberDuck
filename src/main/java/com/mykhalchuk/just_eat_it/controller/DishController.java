@@ -23,11 +23,21 @@ public class DishController {
 
     @GetMapping("{id}")
     public DishDto getById(@PathVariable Long id){
-        return dishService.getById(id);
+        return dishService.getDtoById(id);
+    }
+
+    @GetMapping("daily-dish/{id}")
+    public DishDto getDailyDishById(@PathVariable Long id){
+        return dishService.getDailyDishDtoById(id);
     }
 
     @PostMapping("create")
     public void create(@RequestBody DishCreationDto dishCreationDto){
         dishService.create(dishCreationDto);
+    }
+
+    @GetMapping("substitute/{dailyDishId}")
+    public List<DishDto> getSubstitute(@PathVariable Long dailyDishId){
+        return dishService.getSubstituteForDailyDish(dailyDishId);
     }
 }

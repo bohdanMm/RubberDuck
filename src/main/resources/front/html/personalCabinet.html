@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="../css/general.css">
     <link rel="stylesheet" href="../css/forms.css">
     <link rel="stylesheet" href="../css/navigation-menu.css">
+    <link rel="stylesheet" href="../css/personal-cabinet.css">
 </head>
 <body>
 <div id="navigationMenu"></div>
@@ -14,11 +15,11 @@
         <ul class="flex-outer">
             <li>
                 <label for="email">Електронна пошта</label>
-                <input type="email" id="email">
+                <input type="email" id="email" disabled="true">
             </li>
             <li>
-                <label for="password">Пароль</label>
-                <input type="password" id="password">
+                <label for="dailyCalories">Добова норма калорій</label>
+                <input type="text" id="dailyCalories" disabled="true">
             </li>
             <li>
                 <label for="fullName">Повне ім'я</label>
@@ -45,7 +46,18 @@
                 <select id="trainingRate"></select>
             </li>
             <li>
-                <button type="button" onclick="register()">Реєстрація</button>
+                <button type="button" onclick="editMainUser()">Редагувати</button>
+            </li>
+            <li>
+                <label for="currentPassword">Теперішній пароль</label>
+                <input type="password" id="currentPassword">
+            </li>
+            <li>
+                <label for="newPassword">Новий пароль</label>
+                <input type="password" id="newPassword">
+            </li>
+            <li>
+                <button type="button" onclick="changePassword()">Змінити пароль</button>
             </li>
         </ul>
     </form>

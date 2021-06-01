@@ -26,4 +26,9 @@ public class MenuController {
                                 @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate menuDate) {
         return menuService.getDailyMenu(id, menuDate);
     }
+
+    @PostMapping("substitute-dish")
+    public void substituteDish(@RequestParam Long dailyDishId, @RequestParam Long newDishId){
+        menuService.substituteDish(dailyDishId, newDishId);
+    }
 }
