@@ -1,9 +1,9 @@
 spring:
   datasource:
     type: com.zaxxer.hikari.HikariDataSource
-    url: jdbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: postgres
+    url: jdbc:postgresql://rubberdu.postgres.database.azure.com:5432/postgres
+    username: RubberDuck@rubberdu
+    password: 12345678Aa
   jpa:
     database-platform: org.hibernate.dialect.PostgreSQL9Dialect
     show-sql: true
